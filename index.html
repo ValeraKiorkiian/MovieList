@@ -2,127 +2,129 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vanilla-app-template/favicon.svg" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/src/img/tv.png" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
-    <script type="module" crossorigin src="/vanilla-app-template/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/styles-DvPDDfy5.css">
+    <title>Movie Box</title>
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    /> -->
+    <script type="module" crossorigin src="/movie-list/index.js"></script>
+    <link rel="modulepreload" crossorigin href="/movie-list/assets/vendor-B_8cOpVV.js">
+    <link rel="stylesheet" crossorigin href="/movie-list/assets/vendor-BIx4N7Dj.css">
+    <link rel="stylesheet" crossorigin href="/movie-list/assets/index-C1BShHOx.css">
   </head>
   <body>
     <header class="header">
   <div class="container">
-    <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="/vanilla-app-template/assets/sprite-E8vg0sBb.svg#logo"></use>
+  <nav class="nav">
+    <a class="nav-logo" href="./index.html" aria-label="Site logo">
+      <img src="../img/tv.png" alt="logo" />
+      <p class="nav-logo-text">MovieBox</p>
+    </a>
+    <form class="header-form">
+      <input
+        name="headerSearch"
+        type="text"
+        class="nav-search"
+        placeholder="What do you want to watch?"
+        required
+      />
+      <button class="header-btn" type="submit">
+        <svg class="header-icon" width="16" height="16">
+          <use href="../img/sprite.svg#Search"></use>
         </svg>
-      </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-act}" href="./page-2.html">Page 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-curr}" href="./page-3.html">Page 3</a>
-        </li>
-      </ul>
-    </nav>
+      </button>
+    </form>
+    <button class="header-sign-btn">Sign in</button>
+    <button class="header-menu-btn">
+       <svg  width="36" height="36">
+          <use href="../img/sprite.svg#Menu"></use>
+    </button>
+  </nav>
   </div>
 </header>
-
-
-    <main>
-      <!-- Loads the specified .html file -->
-      <section class="vite-promo">
-  <div class="container">
-    <div class="vite-promo-thumb">
-      <a
-        class="vite-promo-link"
-        href="https://vitejs.dev/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Link to Vite official website"
-        title="Vite.js  build tool"
-      >
-        <!-- Path to images as from index.html file -->
-        <img
-          class="pic"
-          src="/vanilla-app-template/assets/vite-logo-9o_aqrTe.png"
-          alt="Vite logo"
-          width="640"
-          height="640"
-        />
-      </a>
-    </div>
-    <h1 class="main-title">
-      <span class="main-title-gradient">Vite</span>
-      Template by
-      <a
-        class="main-title-link"
-        href="https://github.com/goitacademy/vanilla-app-template"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT
-      </a>
-    </h1>
+    <!-- icon-path="img/sprite.svg#logo" -->
+    <main class="main">
+      <section class="hero">
+  <div class="swiper upcomingMoviesSwiper">
+    <ul class="swiper-wrapper upcomingmovies-list"></ul>
+    <div class="swiper-pagination upcoming-swiper-pagination"></div>
   </div>
 </section>
 
-      <article class="badges">
-  <div class="container">
-    <ul class="badges-list">
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/vite-plugin-html-inject"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          HTML Inject
-        </a>
-      </li>
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/vite-plugin-full-reload"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Full Reload
-        </a>
-      </li>
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/postcss-sort-media-queries"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Sort Media Queries
-        </a>
-      </li>
-    </ul>
+      <section class="featured">
+  <div class="container featured-container">
+    <h2 class="featured-title">Featured Movie</h2>
+    <div class="swiper-wrapper">
+      <div class="swiper featuredMoviesSwiper">
+        <ul class="swiper-wrapper featuredmovies-list"></ul>
+      </div>
+      <div class="featured-swiper-next swiper-button-next"></div>
+      <div class="featured-swiper-prev swiper-button-prev"></div>
+    </div>
   </div>
-</article>
+</section>
+
+      <section class="user-movies hiden">
+  <div class="container">
+    <button class="user-movies-btn" type="button">← Back to main</button>
+    <ul class="user-movies-list"></ul>
+    <button class="show-more-btn hiden" type="button">Show More</button>
+  </div>
+</section>
+
+      <section class="new-arrival-movies">
+  <div class="container new-arrival-container">
+    <h2 class="new-arrival-title">New Arrival</h2>
+    <div class="swiper-wrapper">
+      <div class="swiper newArrivalMoviesSwiper">
+        <ul class="swiper-wrapper new-arrival-movies-list"></ul>
+      </div>
+      <div class="new-arrival-swiper-next swiper-button-next"></div>
+      <div class="new-arrival-swiper-prev swiper-button-prev"></div>
+    </div>
+  </div>
+</section>
+
+      <div class="modal-overlay">
+  <div class="modal">
+    <button class="modal-close-btn" type="button"></button>
+    <form class="modal-form" name="signInForm">
+      <label for="username"
+        >Username
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          placeholder="Enter your username"
+        />
+      </label>
+      <label for="password"
+        >Password
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="Enter your password"
+        />
+      </label>
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
+</div>
 
     </main>
 
-    <footer class="footer">
-  <div class="container">
-    <p class="footer-desc">
-      Made with ✨ by
-      <a
-        class="footer-link"
-        href="https://goit.global/ua/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT team
-      </a>
-    </p>
-  </div>
-</footer>
-
-
+    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
   </body>
 </html>
