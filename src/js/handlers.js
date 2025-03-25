@@ -68,13 +68,13 @@ export async function onSubmitForm(event) {
     const { results, total_results } = await getUserMovies(movieName, page);
     if (!results || results.length === 0) {
       iziToast.show(iziToastContent);
+      onMoveToMainBtn();
       return;
     }
     featuredSection.style.display = 'none';
     newArrivalSection.style.display = 'none';
     userMovieSection.classList.remove('hiden');
     renderUserMovies(results);
-    // console.log(results);
   } catch (error) {
     console.log(error);
   } finally {
