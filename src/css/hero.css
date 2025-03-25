@@ -1,0 +1,27 @@
+.hero {
+  position: relative;
+  height: 600px;
+}
+.hero-movie-average {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: white;
+}
+.hero-movie-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: white;
+}
+.hero-movie-link {
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 171%;
+  text-transform: uppercase;
+  color: white;
+  background-color: #be123c;
+  width: fit-content;
+}

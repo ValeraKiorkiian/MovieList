@@ -1,0 +1,28 @@
+.featured {
+  padding: 70px 0 70px 0;
+}
+.featured-container {
+  width: 1272px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.featured-title {
+  margin-bottom: 44px;
+  font-weight: 700;
+  font-size: 36px;
+}
+.featured-movie-title {
+  font-weight: 700;
+  font-size: 18px;
+}
+.featured-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  padding-top: 12px;
+}
+.featuredList-img {
+  width: 250px;
+  height: 370px !important;
+}
