@@ -31,6 +31,9 @@ body {
   min-height: 100vh;
   margin: 0;
 }
+body.no-scroll {
+  overflow: hidden;
+}
 
 main {
   flex-grow: 1;

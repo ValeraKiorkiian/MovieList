@@ -40,3 +40,14 @@ export async function getNewArrivalMovies() {
   );
   return data;
 }
+
+// `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}&language=en-US`;
+export async function getMoviesId() {
+  const { results } = await getFeaturedMovies();
+  results.forEach(res => {
+    console.log(res.id);
+  });
+}
+getMoviesId();
+
+export async function getVideosById() {}

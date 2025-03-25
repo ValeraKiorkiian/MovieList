@@ -30,6 +30,9 @@ const featuredSection = document.querySelector(`.featured`);
 const userMovieSection = document.querySelector(`.user-movies`);
 const newArrivalSection = document.querySelector(`.new-arrival-movies`);
 export const showMoreBtn = document.querySelector(`.show-more-btn`);
+export const openModalBtn = document.querySelector(`.header-sign-btn`);
+export const closeModalBtn = document.querySelector(`.modal-close-btn`);
+const modalSignIn = document.querySelector(`.modal-overlay`);
 
 let movieName = '';
 let page = 1;
@@ -95,5 +98,14 @@ export async function onShowMoreBtn() {
     renderUserMovies(results);
   } catch (error) {
     console.log(error);
+  }
+}
+
+export function toggleModal() {
+  modalSignIn.classList.toggle(`is-open`);
+  if (modalSignIn.classList.contains('is-open')) {
+    document.body.classList.add('no-scroll');
+  } else {
+    document.body.classList.remove('no-scroll');
   }
 }
