@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/img/tv.png" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/src/img/tv.png" /> -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
@@ -19,7 +19,7 @@
     <script type="module" crossorigin src="/movie-list/index.js"></script>
     <link rel="modulepreload" crossorigin href="/movie-list/assets/vendor-B_8cOpVV.js">
     <link rel="stylesheet" crossorigin href="/movie-list/assets/vendor-BIx4N7Dj.css">
-    <link rel="stylesheet" crossorigin href="/movie-list/assets/index-BRxUhtr-.css">
+    <link rel="stylesheet" crossorigin href="/movie-list/assets/index-C1BShHOx.css">
   </head>
   <body>
     <header class="header">
@@ -93,6 +93,35 @@
     </div>
   </div>
 </section>
+
+      <div class="modal-overlay">
+  <div class="modal">
+    <button class="modal-close-btn" type="button"></button>
+    <form class="modal-form" name="signInForm">
+      <label for="username"
+        >Username
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          placeholder="Enter your username"
+        />
+      </label>
+      <label for="password"
+        >Password
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="Enter your password"
+        />
+      </label>
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
+</div>
 
     </main>
 
