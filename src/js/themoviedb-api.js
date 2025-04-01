@@ -42,12 +42,33 @@ export async function getNewArrivalMovies() {
 }
 
 // `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}&language=en-US`;
-export async function getMoviesId() {
+export async function getVideosById() {
   const { results } = await getFeaturedMovies();
-  results.forEach(res => {
-    console.log(res.id);
-  });
-}
-getMoviesId();
+  const resultIds = results.map(res => res.id);
+  // console.log(...resultIds);
+  const videoRequests = resultIds.map(id =>
+    axios.get(
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
+    )
+  );
 
-export async function getVideosById() {}
+  const videos = await Promise.all(videoRequests);
+  // console.log(videos);
+
+  const trailers = videos.reduce((acc, video) => {
+    const trailer = video.data.results.find(vid => vid.type === 'Trailer');
+    if (trailer) {
+      acc.push(trailer);
+    }
+    return acc;
+  }, []);
+  // console.log(trailers);
+  return trailers.slice(0, 8);
+}
+// curl -X GET "https://api.themoviedb.org/3/person/popular?api_key=YOUR_API_KEY&language=ru-RU&page=1"
+export async function getActors() {
+  const { data } = await axios.get(
+    `https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=ru-RU&page=1`
+  );
+  return data;
+}

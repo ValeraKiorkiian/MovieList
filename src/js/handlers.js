@@ -5,6 +5,8 @@ import {
   renderUpcomingMovies,
   renderUserMovies,
   renderNewArrivalMovies,
+  renderVideos,
+  renderActors,
   cleanUserMovies,
 } from './render';
 import {
@@ -12,6 +14,8 @@ import {
   getFeaturedMovies,
   getUserMovies,
   getNewArrivalMovies,
+  getVideosById,
+  getActors,
 } from './themoviedb-api';
 
 const iziToastContent = {
@@ -29,6 +33,7 @@ export const moveToMainBtn = document.querySelector(`.user-movies-btn`);
 const featuredSection = document.querySelector(`.featured`);
 const userMovieSection = document.querySelector(`.user-movies`);
 const newArrivalSection = document.querySelector(`.new-arrival-movies`);
+const videosSection = document.querySelector('.videos');
 export const showMoreBtn = document.querySelector(`.show-more-btn`);
 export const openModalBtn = document.querySelector(`.header-sign-btn`);
 export const closeModalBtn = document.querySelector(`.modal-close-btn`);
@@ -57,6 +62,22 @@ export async function onDOMContentLoaded() {
   } catch (error) {
     console.log(error);
   }
+  try {
+    const videos = await getVideosById();
+    console.log(videos);
+
+    renderVideos(videos);
+  } catch (error) {
+    console.log(error);
+  }
+  try {
+    const { results } = await getActors();
+    console.log(results);
+
+    renderActors(results.slice(0, 15));
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function onSubmitForm(event) {
@@ -74,6 +95,8 @@ export async function onSubmitForm(event) {
     featuredSection.style.display = 'none';
     newArrivalSection.style.display = 'none';
     userMovieSection.classList.remove('hiden');
+    videosSection.style.display = 'none';
+
     renderUserMovies(results);
   } catch (error) {
     console.log(error);
@@ -86,9 +109,10 @@ export function onMoveToMainBtn() {
   userMovieSection.classList.add('hiden');
   featuredSection.style.display = 'flex';
   newArrivalSection.style.display = 'flex';
+  videosSection.style.display = 'flex';
 }
 
-export async function onShowMoreBtn() {
+export async function onShowMoreBtnClick() {
   page++;
   try {
     const { results, total_results, total_page } = await getUserMovies(
@@ -96,6 +120,9 @@ export async function onShowMoreBtn() {
       page
     );
     renderUserMovies(results);
+    const items = document.querySelectorAll('.user-movies-item');
+    if (items.length >= total_results) {
+    }
   } catch (error) {
     console.log(error);
   }

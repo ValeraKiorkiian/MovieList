@@ -3,7 +3,7 @@ import {
   onDOMContentLoaded,
   onSubmitForm,
   onMoveToMainBtn,
-  onShowMoreBtn,
+  onShowMoreBtnClick,
   openModalBtn,
   closeModalBtn,
   toggleModal,
@@ -13,6 +13,6 @@ import { form, moveToMainBtn, showMoreBtn } from './js/handlers';
 document.addEventListener(`DOMContentLoaded`, onDOMContentLoaded);
 form.addEventListener(`submit`, onSubmitForm);
 moveToMainBtn.addEventListener(`click`, onMoveToMainBtn);
-showMoreBtn.addEventListener(`click`, onShowMoreBtn);
+showMoreBtn.addEventListener(`click`, onShowMoreBtnClick);
 openModalBtn.addEventListener(`click`, toggleModal);
 closeModalBtn.addEventListener(`click`, toggleModal);

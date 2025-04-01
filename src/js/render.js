@@ -1,19 +1,12 @@
-import {
-  upcomingMoviesSwiper,
-  featuredMoviesSwiper,
-  newArrivalMoviesSwiper,
-} from './swiper';
 import defaultImage from '../img/vite-logo.png';
-
-const upcomingList = document.querySelector(`.upcomingmovies-list`);
-const userList = document.querySelector(`.user-movies-list`);
-const newArrivalList = document.querySelector(`.new-arrival-movies-list`);
-export const featuredList = document.querySelector(`.featuredmovies-list`);
+import { refs } from './refs';
+import { upcomingSwiper } from './swiper';
 
 export function renderUpcomingMovies(movies) {
   const markup = movies
     .map(
       ({ backdrop_path, original_title, overview, vote_average }) => `
+      
  <li class="swiper-slide hero-swiper-slide">
 <div class="container">
   <div class="text-container">
@@ -30,8 +23,9 @@ export function renderUpcomingMovies(movies) {
       </li>   `
     )
     .join(``);
-  upcomingList.innerHTML = markup;
-  upcomingMoviesSwiper();
+  refs.upcomingList.innerHTML = markup;
+  // upcomingMoviesSwiper();
+  upcomingSwiper.update();
 }
 
 export function renderFeaturedMovies(movies) {
@@ -65,8 +59,8 @@ export function renderFeaturedMovies(movies) {
  </li>`
     )
     .join(``);
-  featuredList.innerHTML = markup;
-  featuredMoviesSwiper();
+  refs.featuredList.innerHTML = markup;
+  // featuredMoviesSwiper();
 }
 
 export function renderUserMovies(movies) {
@@ -85,7 +79,7 @@ export function renderUserMovies(movies) {
  </li>`
     )
     .join(``);
-  userList.insertAdjacentHTML(`beforeend`, markup);
+  refs.userList.insertAdjacentHTML(`beforeend`, markup);
 }
 
 export function renderNewArrivalMovies(movies) {
@@ -119,10 +113,48 @@ export function renderNewArrivalMovies(movies) {
  </li>`
     )
     .join(``);
-  newArrivalList.innerHTML = markup;
-  newArrivalMoviesSwiper();
+  refs.newArrivalList.innerHTML = markup;
+  // newArrivalMoviesSwiper();
 }
 
 export function cleanUserMovies() {
-  userList.innerHTML = '';
+  refs.userList.innerHTML = '';
+}
+export function renderVideos(trailers) {
+  const markup = trailers
+    .map(
+      ({ key, name }) =>
+        `
+        <li class="swiper-slide video-item">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/${key}"
+            frameborder="0"
+            width="450"
+            height="253">
+            allow="picture-in-picture"
+            allowfullscreen
+          </iframe>
+          <p class="video-text">${name}</p>
+        </li>
+       
+        `
+    )
+    .join(``);
+
+  refs.videoList.innerHTML = markup;
+}
+
+export function renderActors(actors) {
+  const markup = actors
+    .map(
+      ({ original_name, profile_path }) => `
+  <li class="swiper-slide actors-item">
+  <img class="actors-img"
+  src="https://image.tmdb.org/t/p/w500/${profile_path}"
+  <p>${original_name}</p>
+  </li>
+  `
+    )
+    .join('');
+  refs.actorsList.innerHTML = markup;
 }
